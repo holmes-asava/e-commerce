@@ -35,16 +35,21 @@ class ProductDetail(models.Model):
     def get_price(self):
         return self.price
 
-
+    def current_stock(self):
+        return ProductStock.objects.filter(product=self).aggregate(models.Sum('amount'))['amount__sum'] or 0
+    
+    
 class ProductStock(models.Model):
     STATUS_CHOICES = (
         ('1', 'Deposite'),
         ('2', 'Withdrawal'),
     )
 
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(ProductDetail, on_delete=models.CASCADE)
     amount = models.IntegerField(null=False, blank=False)
     status = models.CharField(null=False, blank=False, max_length=8, choices=STATUS_CHOICES)
     created_by = models.CharField(max_length=255)
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'payment',
     'coupon',
     'customer',
+    'feedback',
 ]
 LOCAL_APPS = [
     'product',
