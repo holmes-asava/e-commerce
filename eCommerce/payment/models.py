@@ -2,6 +2,7 @@ from coupon.models import Coupon
 from django.db import models
 from product.models import ProductDetail
 
+#Cart model
 
 # Create your models here.
 class Transaction(models.Model):
@@ -18,7 +19,7 @@ class Transaction(models.Model):
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
     coupon = models.ForeignKey(Coupon, on_delete=models.SET_NULL, null=True, blank=True)
-    
+    #note: can't track data from user when shipping to address.
     def cal_discount(self, coupon):
 
         if coupon.discount_type == '1':
