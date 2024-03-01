@@ -39,7 +39,9 @@ class Coupon(models.Model):
         null=False,
         blank=False,
     )
-    discount_type = models.CharField(null=False, blank=False, max_length=8, choices=COUPON_CHOICES)
+    discount_type = models.CharField(
+        null=False, blank=False, max_length=8, choices=DISCOUNT_CHOICES
+    )
     status = models.CharField(null=False, blank=False, max_length=8, choices=STATUS_CHOICES)
     start_date = models.DateTimeField(null=True, blank=True)
     end_date = models.DateTimeField(null=True, blank=True)
