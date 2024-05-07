@@ -23,6 +23,7 @@ class ProductDetail(models.Model):
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
+    # Shipping cost is not included in the price
     # TODO change to image list fields
     image = models.ImageField(upload_to='product_images/')
 

@@ -46,3 +46,9 @@ class Coupon(models.Model):
     start_date = models.DateTimeField(null=True, blank=True)
     end_date = models.DateTimeField(null=True, blank=True)
     token = models.CharField(null=False, blank=False, unique=True, max_length=32)
+    # TODO : add total price, total discount, total shipment, total tax, total payment
+
+
+# UserCoupon(models.Model):
+#     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)  
+#     coupon = models.For(Coupon, on_delete=models.CASCADE)

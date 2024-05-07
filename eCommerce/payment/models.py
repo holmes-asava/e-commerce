@@ -3,6 +3,7 @@ from customer.models import Address, Customer
 from django.db import models
 from product.models import ProductDetail
 
+#Cart model
 
 # Create your models here.
 class Transaction(models.Model):
