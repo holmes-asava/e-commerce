@@ -7,6 +7,7 @@ from product.models import Product, ProductTag
 
 @admin.register(Coupon)
 class CouponAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'type', 'start_date', 'end_date', 'status']
     list_per_page = 30
 
 
@@ -23,8 +24,9 @@ class ProductTagInlineAdmin(admin.TabularInline):
 @admin.register(CouponCondition)
 class CouponConditionAdmin(admin.ModelAdmin):
     list_per_page = 30
-    fields = ['status',]
+    fields = [
+        'status',
+    ]
     list_display = ['id', 'status']
-    list_editable = ['status']
 
     inlines = [ProductInlineAdmin, ProductTagInlineAdmin]
