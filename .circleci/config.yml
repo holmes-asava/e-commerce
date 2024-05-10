@@ -1,18 +1,15 @@
+version: “2.1”
+orbs:
+  heroku: circleci/heroku@2.0
 jobs:
-  build_and_test: # this can be any name you choose
-    executor: python/default # use the default executor defined within the orb
+  deploy:
+    executor: heroku/default
     steps:
-      - checkout # checkout source code
-      - python/install-packages:
-          pkg-manager: pip
-      - run:
-          name: Install dependencies
-          command: pip install -r requirements.txt
-      - run:
-          name: Run tests
-          command: python -m pytest
-      - persist_to_workspace:
-          root: ~/project
-          paths:
-            - .
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git
+workflows:
+  heroku_deploy:
+    jobs:
+      - deploy
 
