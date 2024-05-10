@@ -4,3 +4,6 @@ How to install this project.
 2. Install python 3.10
 3. Run command runserver => python manage.py runserver
 4. Migrate models => python manage.py migrate
+
+
+test 
