@@ -1,6 +1,7 @@
-from coupon.models import Coupon
 from django.conf import settings
 from django.db import models
+
+from coupon.models import Coupon
 
 
 class Customer(models.Model):
@@ -16,6 +17,9 @@ class Customer(models.Model):
     def get_default_address(self):
         return self.address_set.filter(is_default=True).first()
 
+    @property
+    def name(self):
+        return f'{self.first_name} {self.last_name}'
 
 class Address(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)

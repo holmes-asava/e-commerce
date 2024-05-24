@@ -1,4 +1,7 @@
+from django.contrib.auth.models import User
 from django.test import TestCase
+
+from .models import Customer
 
 
 # Create your tests here.
@@ -6,9 +9,6 @@ from django.test import TestCase
 class CustomerModelTestCase(TestCase):
 
     def setUp(self):
-        from django.contrib.auth.models import User
-
-        from .models import Customer
 
         self.user = User.objects.create_user(
             username='johndoe',
