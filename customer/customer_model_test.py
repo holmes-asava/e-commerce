@@ -25,4 +25,3 @@ class CustomerModelTestCase(TestCase):
 
     def test_customer_email(self):
         self.assertEqual(self.customer.last_name, 'last_name')
-
