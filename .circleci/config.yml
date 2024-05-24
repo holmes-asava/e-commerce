@@ -2,10 +2,13 @@ version: 2.1
 orbs:
   python: circleci/python@2.0.3
   heroku: circleci/heroku@1.2.6
+  
 
 jobs:
   build_and_test: # this can be any name you choose
-    executor: python/default
+    executor:
+      name: python/default
+      tag: '3.9.6'  
     steps:
       - checkout
       - python/install-packages:
@@ -14,6 +17,9 @@ jobs:
           root: ~/project
           paths:
             - .
+      - run :
+          name: Run tests 
+          command: pytest 
 
   deploy: # this can be any name you choose
     executor: python/default
