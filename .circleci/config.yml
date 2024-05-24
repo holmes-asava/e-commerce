@@ -1,17 +1,23 @@
 version: 2.1
 orbs:
   heroku: circleci/heroku@1.2.6
-  
+  python: circleci/python@2.0.3
 
 jobs:
   build_and_test: # this can be any name you choose
     executor:
       name: python/default
-      tag: '3.9.6'  
+      tag: '3.12.3'  
     steps:
       - checkout
       - python/install-packages:
           pkg-manager: pip
+      - run :
+          name: Install Dependencies
+          command: |
+              python -m venv venv
+              . venv/bin/activate
+              pip install -r requirements.txt
       - persist_to_workspace:
           root: ~/project
           paths:
