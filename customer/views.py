@@ -57,4 +57,3 @@ class CustomerViewSet(viewsets.ModelViewSet):
             {'email': user.first().email, 'token': user.first().auth_token.key},
             status=status.HTTP_200_OK,
         )
-å
